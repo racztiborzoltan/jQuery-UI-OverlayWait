@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>jQuery UI OverlayWait plugin </title>
+	
+	<!-- jQuery 1.10 -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<!-- jQuery UI 1.10.2 -->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css" />
+	<script id="jquery_ui_js" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	
+	
+	<!-- jQuery UI Theme Switcher Widget -->
+	<script type="text/javascript" src="https://raw.github.com/harborhoffer/Super-Theme-Switcher/master/jquery.themeswitcher.min.js"></script>
+	
+	<!-- jQuery UI OverlayWait -->
+	<script type="text/javascript" src="jquery.ui.overlaywait.js"></script>
+
+</head>
+<body>
+
+	<div id="switcher" style="display:inline-block"></div>
+	<hr style="margin-bottom: 3em;"/>
+	
+	
+	<script type="text/javascript">
+	$('#switcher').themeswitcher({
+		jqueryUiVersion: '1.10.3', 
+		imgpath: "https://raw.github.com/harborhoffer/Super-Theme-Switcher/master/images/"
+	});	
+	</script>
+
+	<div id="buttons">
+		<button id="create" type="button">CREATE</button>
+		<button id="destroy" type="button" disabled="disabled">DESTROY</button>
+		<button id="open" type="button" disabled="disabled">OPEN</button>
+		<button id="close" type="button" disabled="disabled">CLOSE</button>
+	</div>
+	<hr />
+	
+	<div id="lipsum">
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at neque vel libero imperdiet ullamcorper. Mauris eget tempus ante. Fusce nisi mauris, ornare nec rutrum id, imperdiet sed felis. Suspendisse suscipit est sed mi blandit mollis mattis velit consectetur. Proin lacinia interdum molestie. Vivamus leo justo, commodo eget commodo ac, ultricies mattis arcu. Sed facilisis dignissim semper. Morbi dolor eros, tristique ac bibendum euismod, tincidunt vehicula nibh. Phasellus imperdiet sagittis interdum. Aliquam orci velit, ultricies at iaculis ut, tincidunt in purus. Quisque dictum, erat ut malesuada lobortis, eros augue hendrerit purus, non dignissim quam ipsum et ante.
+		</p>
+		<p>
+		Curabitur tempor dictum justo, in elementum mi cursus quis. Morbi a mattis lacus. Nunc fringilla, justo at feugiat congue, metus risus sollicitudin metus, a cursus nisi mauris et tortor. Donec faucibus mi at nisl aliquet pellentesque. Fusce sagittis consectetur vehicula. Praesent non diam felis, id venenatis lacus. Duis nec risus leo, a rhoncus felis. Quisque tempus turpis a odio lobortis blandit. Praesent justo nunc, dapibus vitae facilisis eget, aliquam a nibh. Proin tempus libero ut magna porttitor eu rhoncus odio fermentum. Cras facilisis augue in mauris eleifend convallis sagittis justo ultrices. Duis eget nibh et turpis pretium vulputate.
+		</p>
+		<p>
+		Integer mattis leo id mauris malesuada molestie. Nunc id arcu sem. Morbi elementum mattis mi, sed mattis magna venenatis id. Nulla laoreet auctor augue, eu ultricies sem accumsan eu. Pellentesque placerat augue in nisi auctor faucibus. Maecenas nisl augue, tristique gravida ullamcorper at, accumsan at orci. Cras tristique, lacus id vehicula elementum, elit mi commodo nibh, sit amet adipiscing libero ligula vel felis.
+		</p>
+	</div>
+	
+	<script type="text/javascript">
+	$(function(){
+	
+		$('#buttons button').click(function(){
+			switch (this.id)
+			{
+			case 'create':
+				$('#lipsum').overlaywait();
+				$('#create, #destroy, #open, #close').removeAttr('disabled');
+				break;
+			case 'destroy':
+				$('#lipsum').overlaywait('destroy');
+				$('#create').removeAttr('disabled');
+				$('#destroy, #open, #close').attr('disabled', 'disabled');
+				break;
+			case 'open':
+				$('#lipsum').overlaywait('open');
+				break;
+			case 'close':
+				$('#lipsum').overlaywait('close');
+				break;
+			};
+			
+		})
+	});
+	</script>
+
+</body>
+</html>
